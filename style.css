@@ -1,17 +1,15 @@
-
-
-body{
+body {
     font-family: Helvetica, sans-serif;
     text-align: center;
 }
 
-h1{
+h1 {
     font-size: 42px;
 }
 
 /* botoes */
 
-#buttons_container button{
+#buttons_container button {
     border: none;
     padding: 10px 15px;
     margin: 0 10px;
@@ -19,7 +17,7 @@ h1{
 
 /* jogo */
 
-#conteiner{
+#conteiner {
     display: flex;
     width: 300px;
     margin: 0;
@@ -29,23 +27,23 @@ h1{
     margin: 20px auto;
 }
 
-#box-1,#box-2,#box-3{
+#box-1, #box-2, #box-3 {
     border-top: none;
 }
 
-#box-1,#box-4,#box-7{
+#box-1, #box-4, #box-7 {
     border-left: none;
 }
 
-#box-7,#box-8,#box-9{
+#box-7, #box-8, #box-9 {
     border-bottom: none;
 }
 
-#box-3,#box-6,#box-9{
+#box-3, #box-6, #box-9 {
     border-right: none;
 }
 
-.box{
+.box {
     height: 100px;
     box-sizing: border-box;
     border: 5px solid #000;
@@ -55,3 +53,88 @@ h1{
 
 /* simbolos */
 
+.x {
+    font-size: 65px;
+    display: inline-block;
+    color: red;
+    line-height: 100px;
+}
+
+
+.o {
+    border: 5px solid green;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 17px;
+}
+
+/* esconder */
+
+/* .hide{
+    display: none !important;
+} */
+
+/* placar */
+
+#placar {
+    font-weight: bold;
+    margin-top: 30px;
+    font-size: 25px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.score-box {
+    margin: 0 20px;
+}
+
+#x-scoreboard {
+    color: red;
+    margin-right: 3px;
+}
+
+#o-scoreboard {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid green;
+    border-radius: 50%;
+    margin-left: 3px;
+}
+
+/* mensagem de vitoria */
+
+#mensagem p {
+    position: absolute;
+    margin: 0 auto;
+    left: 0 ;
+    right: 0;
+    top: 250px;
+    width: 500px;
+    font-size: 50px;
+    background-color: #000000;
+    color: #fff;
+    padding: 20px;
+    scale: 1 ;
+    opacity: 1;
+    animation: surgir .4s ease-in-out 1;
+    display: none;
+
+}
+
+@keyframes surgir{
+    0%{
+        scale: 0;
+        opacity: 0;
+    }
+    90%{
+        scale: 1.1;
+        opacity: 1;
+    }
+    100%{
+        scale: 1;
+        opacity: 1;
+    }
+}
