@@ -1,0 +1,57 @@
+
+
+body{
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+}
+
+h1{
+    font-size: 42px;
+}
+
+/* botoes */
+
+#buttons_container button{
+    border: none;
+    padding: 10px 15px;
+    margin: 0 10px;
+}
+
+/* jogo */
+
+#conteiner{
+    display: flex;
+    width: 300px;
+    margin: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    margin: 20px auto;
+}
+
+#box-1,#box-2,#box-3{
+    border-top: none;
+}
+
+#box-1,#box-4,#box-7{
+    border-left: none;
+}
+
+#box-7,#box-8,#box-9{
+    border-bottom: none;
+}
+
+#box-3,#box-6,#box-9{
+    border-right: none;
+}
+
+.box{
+    height: 100px;
+    box-sizing: border-box;
+    border: 5px solid #000;
+    flex: 1 1 33%;
+
+}
+
+/* simbolos */
+
