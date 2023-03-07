@@ -6,16 +6,6 @@ let botoes = document.querySelectorAll("#buttons_container button");
 let messageConteiner = document.querySelector("#mensagem");
 let messagetext = document.querySelector('#mensagem p');
 let secondPlayer;
-const vitoriasP = [
-    [1,2,3],
-    [4,5,6],
-    [7,8,9],
-    [1,4,7],
-    [2,5,8],
-    [3,6,9],
-    [1,5,9],
-    [3,5,7]
-]
 
 // contador de jogadas
 let player1 = 0;
