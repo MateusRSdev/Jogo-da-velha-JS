@@ -17,12 +17,9 @@ const vitoriasP = [
     [3, 5, 7]
 ]
 
-
-
 // contador de jogadas
 let player1 = 0;
 let player2 = 0;
-
 
 console.log(botoes[1]);
 // adicionando evento de clique aos boxes
@@ -45,11 +42,9 @@ for (let i = 0; i < caixas.length; i++) {
                 player1++;
 
                 if (secondPlayer == "ia-player") {
-
                     //funcao para executar a jogada
                     computerPlay()
                     player2++;
-
                 }
             } else {
                 player2++;
@@ -89,7 +84,6 @@ function checkEL(p1, p2) {
         //o
         el = o;
     }
-
     return el;
 }
 
@@ -115,7 +109,6 @@ function checWinCondition() {
             }
         }
     }
-
 
     //deu velha
 
@@ -164,13 +157,9 @@ function declareWhinner(whinner) {
     player2 = 0;
 
     let remover = document.querySelectorAll(".box div");
-
-
     for (let i = 0; i < remover.length; i++) {
         remover[i].parentNode.removeChild(remover[i]);
     }
-
-
 
 }
 
@@ -179,10 +168,7 @@ function computerPlay() {
 
     var risco = null;
 
-
     for (let c = 0; c < 8; c++) {
-
-
 
         let vazio = 0;
         let X = 0;
@@ -263,19 +249,6 @@ function computerPlay() {
         }
     } else {
         risco = risco - 1
-        caixas[risco].appendChild(cloneO);
-
+        caixas[risco].appendChild(cloneO)
     }
-
-
-
-
 }
-
-
-
-
-
-
-
-
