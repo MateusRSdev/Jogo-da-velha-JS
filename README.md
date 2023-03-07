@@ -2,8 +2,11 @@
  
  esse foi um projeto de um curso de Javascript q eu fiz. Mas foi um projeto bem simples e eu achei legal dar uma incrementada nele
  
- o jogo tem dois modos de jogo o de 2 players e o contra IA
+> o jogo tem dois modos de jogo o de 2 players e o contra IA
  
+ <hr>
  ### -- mudanças --
  
- o código original tinha muita coisa desnecessária a primeira coisa que eu fiz foi tentar reduzir o código desnecessário utilizando estruturas de repetição ao envés de fazer tudo hard code _o que
+ - o código original tinha muita coisa desnecessária a primeira coisa que eu fiz foi tentar reduzir o código desnecessário utilizando estruturas de repetição ao envés de fazer tudo **hard code** _o que reduziu umas 80 linhas de código_😳
+<br>
+ - Eu também melhorei a IA do jogo que antes era feita com um simples _Math.Random_ eu dei uma modificada e consegui deixar ela um pouco mais inteligente e lógica
