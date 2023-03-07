@@ -1,6 +1,7 @@
  # Jogo da velha
  
- Esse foi um projeto de um curso de Javascript q eu fiz. Mas foi um projeto bem simples e eu achei legal dar uma incrementada nele..😁
+ Esse foi um projeto de um curso de Javascript q eu fiz. Mas foi um projeto bem simples e eu achei legal dar uma incrementada nele..😁<br>
+ Você pode ver a versão original do jogo no branch "versao1"
  
 > o jogo tem dois modos de jogo o de *2 players* e o *contra IA* 
  
