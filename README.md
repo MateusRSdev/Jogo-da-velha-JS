@@ -5,6 +5,7 @@
 > o jogo tem dois modos de jogo o de 2 players e o contra IA
  
  <hr>
+ 
  ### -- mudanças --
  
  - o código original tinha muita coisa desnecessária a primeira coisa que eu fiz foi tentar reduzir o código desnecessário utilizando estruturas de repetição ao envés de fazer tudo **hard code** _o que reduziu umas 80 linhas de código_😳
