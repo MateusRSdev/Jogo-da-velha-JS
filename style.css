@@ -7,6 +7,11 @@ h1 {
     font-size: 42px;
 }
 
+.hide{
+    display: none;
+    visibility: hidden;
+}
+
 /* botoes */
 
 #buttons_container button {
@@ -117,10 +122,11 @@ h1 {
     background-color: #000000;
     color: #fff;
     padding: 20px;
+    display: block;
     scale: 1 ;
     opacity: 1;
     animation: surgir .4s ease-in-out 1;
-    display: none;
+
 
 }
 
