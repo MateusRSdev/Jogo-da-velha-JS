@@ -144,3 +144,8 @@ h1 {
         opacity: 1;
     }
 }
+
+.x,
+.o{
+    animation: surgir .2s ease-in-out 1;
+}

@@ -7,25 +7,31 @@ let messageConteiner = document.querySelector("#mensagem");
 let messagetext = document.querySelector('#mensagem p');
 let secondPlayer;
 const vitoriasP = [
-    [1,2,3],
-    [4,5,6],
-    [7,8,9],
-    [1,4,7],
-    [2,5,8],
-    [3,6,9],
-    [1,5,9],
-    [3,5,7]
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+    [1, 5, 9],
+    [3, 5, 7]
 ]
+
+
 
 // contador de jogadas
 let player1 = 0;
 let player2 = 0;
+
+
 console.log(botoes[1]);
 // adicionando evento de clique aos boxes
 for (let i = 0; i < caixas.length; i++) {
     caixas[i].addEventListener("click", function () {
 
         let el = checkEL(player1, player2);
+        let valor = el.className;
+        console.log(valor);
 
         //verifica se a caixa ja foi marcada
         if (this.childNodes.length == 0) {
@@ -42,7 +48,6 @@ for (let i = 0; i < caixas.length; i++) {
 
                     //funcao para executar a jogada
                     computerPlay()
-                    console.log("ia");
                     player2++;
 
                 }
@@ -90,115 +95,27 @@ function checkEL(p1, p2) {
 
 function checWinCondition() {
 
-    let b1 = document.getElementById("box-1");
-    let b2 = document.getElementById("box-2");
-    let b3 = document.getElementById("box-3");
-    let b4 = document.getElementById("box-4");
-    let b5 = document.getElementById("box-5");
-    let b6 = document.getElementById("box-6");
-    let b7 = document.getElementById("box-7");
-    let b8 = document.getElementById("box-8");
-    let b9 = document.getElementById("box-9");
-
     //horizontal
 
-    if (b1.childNodes.length > 0 && b2.childNodes.length > 0 && b3.childNodes.length > 0) {
-        let c1 = b1.childNodes[0].className;
-        let c2 = b2.childNodes[0].className;
-        let c3 = b3.childNodes[0].className;
+    for (let i = 0; i < 8; i++) {
 
-        if (c1 == "x" && c2 == "x" && c3 == "x") {
-            declareWhinner("x")
-        } else if (c1 == "o" && c2 == "o" && c3 == "o") {
-            declareWhinner("o")
+        let b1 = document.getElementById("box-" + vitoriasP[i][0]);
+        let b2 = document.getElementById("box-" + vitoriasP[i][1]);
+        let b3 = document.getElementById("box-" + vitoriasP[i][2]);
+
+        if (b1.childNodes.length > 0 && b2.childNodes.length > 0 && b3.childNodes.length > 0) {
+            let c1 = b1.childNodes[0].className;
+            let c2 = b2.childNodes[0].className;
+            let c3 = b3.childNodes[0].className;
+
+            if (c1 == "x" && c2 == "x" && c3 == "x") {
+                declareWhinner("x")
+            } else if (c1 == "o" && c2 == "o" && c3 == "o") {
+                declareWhinner("o")
+            }
         }
     }
 
-    if (b4.childNodes.length > 0 && b5.childNodes.length > 0 && b6.childNodes.length > 0) {
-        let c1 = b4.childNodes[0].className;
-        let c2 = b5.childNodes[0].className;
-        let c3 = b6.childNodes[0].className;
-
-        if (c1 == "x" && c2 == "x" && c3 == "x") {
-            declareWhinner("x")
-        } else if (c1 == "o" && c2 == "o" && c3 == "o") {
-            declareWhinner("o")
-        }
-    }
-
-    if (b7.childNodes.length > 0 && b8.childNodes.length > 0 && b9.childNodes.length > 0) {
-        let c1 = b7.childNodes[0].className;
-        let c2 = b8.childNodes[0].className;
-        let c3 = b9.childNodes[0].className;
-
-        if (c1 == "x" && c2 == "x" && c3 == "x") {
-            declareWhinner("x")
-        } else if (c1 == "o" && c2 == "o" && c3 == "o") {
-            declareWhinner("o")
-        }
-    }
-
-    //vertical
-
-    if (b1.childNodes.length > 0 && b4.childNodes.length > 0 && b7.childNodes.length > 0) {
-        let c1 = b1.childNodes[0].className;
-        let c2 = b4.childNodes[0].className;
-        let c3 = b7.childNodes[0].className;
-
-        if (c1 == "x" && c2 == "x" && c3 == "x") {
-            declareWhinner("x")
-        } else if (c1 == "o" && c2 == "o" && c3 == "o") {
-            declareWhinner("o")
-        }
-    }
-    if (b2.childNodes.length > 0 && b5.childNodes.length > 0 && b8.childNodes.length > 0) {
-        let c1 = b2.childNodes[0].className;
-        let c2 = b5.childNodes[0].className;
-        let c3 = b8.childNodes[0].className;
-
-        if (c1 == "x" && c2 == "x" && c3 == "x") {
-            declareWhinner("x")
-        } else if (c1 == "o" && c2 == "o" && c3 == "o") {
-            declareWhinner("o")
-        }
-    }
-    if (b3.childNodes.length > 0 && b6.childNodes.length > 0 && b9.childNodes.length > 0) {
-        let c1 = b3.childNodes[0].className;
-        let c2 = b6.childNodes[0].className;
-        let c3 = b9.childNodes[0].className;
-
-        if (c1 == "x" && c2 == "x" && c3 == "x") {
-            declareWhinner("x")
-        } else if (c1 == "o" && c2 == "o" && c3 == "o") {
-            declareWhinner("o")
-        }
-    }
-
-    //diagonais
-
-    if (b1.childNodes.length > 0 && b5.childNodes.length > 0 && b9.childNodes.length > 0) {
-        let c1 = b1.childNodes[0].className;
-        let c2 = b5.childNodes[0].className;
-        let c3 = b9.childNodes[0].className;
-
-        if (c1 == "x" && c2 == "x" && c3 == "x") {
-            declareWhinner("x")
-        } else if (c1 == "o" && c2 == "o" && c3 == "o") {
-            declareWhinner("o")
-        }
-    }
-
-    if (b3.childNodes.length > 0 && b5.childNodes.length > 0 && b7.childNodes.length > 0) {
-        let c1 = b3.childNodes[0].className;
-        let c2 = b5.childNodes[0].className;
-        let c3 = b7.childNodes[0].className;
-
-        if (c1 == "x" && c2 == "x" && c3 == "x") {
-            declareWhinner("x")
-        } else if (c1 == "o" && c2 == "o" && c3 == "o") {
-            declareWhinner("o")
-        }
-    }
 
     //deu velha
 
@@ -216,7 +133,6 @@ function checWinCondition() {
 }
 
 //limpa o jogo, decalra um vencedor e atualiza o placar
-
 
 function declareWhinner(whinner) {
 
@@ -249,39 +165,117 @@ function declareWhinner(whinner) {
 
     let remover = document.querySelectorAll(".box div");
 
+
     for (let i = 0; i < remover.length; i++) {
         remover[i].parentNode.removeChild(remover[i]);
     }
+
+
 
 }
 
 //logica da IA
 function computerPlay() {
 
+    var risco = null;
+
+
+    for (let c = 0; c < 8; c++) {
+
+
+
+        let vazio = 0;
+        let X = 0;
+        let O = 0;
+
+        let b1 = document.getElementById("box-" + vitoriasP[c][0]);
+        let b2 = document.getElementById("box-" + vitoriasP[c][1]);
+        let b3 = document.getElementById("box-" + vitoriasP[c][2]);
+
+        let linhas = [b1, b2, b3]
+        let valoresF = [null, null, null]
+        // console.log(linhas);
+        for (let i = 0; i < 3; i++) {
+            if (linhas[i].childNodes[0] === undefined) {
+                valoresF[i] = null
+            } else {
+                valoresF[i] = linhas[i].childNodes[0].className
+            }
+
+
+            if (valoresF[i] == null) {
+                vazio += 1
+            } else if (valoresF[i] == "x") {
+                X += 1
+            } else {
+                O += 1
+            }
+
+        }
+        //verifica se existe um risco de perder ou ganhar
+        if (vazio == 1 && (X == 2 || O == 2)) {
+            let i = 0
+            if (X == 2) {
+                while (i < 3) {
+                    if (valoresF[i] == null) {
+                        risco = vitoriasP[c][i]
+                    }
+                    i++
+                }
+            } else if (O == 2) {
+                while (i < 3) {
+                    if (valoresF[i] == null) {
+                        risco = vitoriasP[c][i]
+                    }
+                    i++
+                }
+            }
+        }
+    }
     let cloneO = o.cloneNode(true);
     let counter = 0;
     let filter = 0;
+    console.log("risco = " + risco);
 
-    for (let i = 0; i < caixas.length; i++) {
+    if (risco === null) {
+        for (let i = 0; i < caixas.length; i++) {
 
-        let ramdomNumber = Math.floor(Math.random() * 5)
-        //só preeencher se estiver vazio
-        if (caixas[i].childNodes[0] == undefined) {
-            if (ramdomNumber <= 1) {
-                caixas[i].appendChild(cloneO);
-                counter++;
-                break;
-                //checagem de quantas estao preenchidas
+            let ramdomNumber = Math.floor(Math.random() * 5)
+            //só preeencher se estiver vazio
+            if (caixas[i].childNodes[0] == undefined) {
 
+                if (ramdomNumber <= 1) {
+                    caixas[i].appendChild(cloneO);
+                    counter++;
+                    console.log("ramdom");
+                    break;
+                    //checagem de quantas estao preenchidas
+
+                }
+            } else {
+                filter++;
             }
-        } else {
-            filter++;
+
         }
 
+        if (counter == 0 && filter < 9) {
+            computerPlay()
+        }
+    } else {
+        risco = risco - 1
+        caixas[risco].appendChild(cloneO);
+
     }
 
-    if (counter == 0 && filter < 9) {
-        computerPlay()
-    }
+
+
 
 }
+
+
+
+
+
+
+
+
