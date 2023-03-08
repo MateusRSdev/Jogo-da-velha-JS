@@ -40,6 +40,7 @@ for (let i = 0; i < caixas.length; i++) {
             //computar jogada
             if (player1 == player2) {
                 player1++;
+                checWinCondition();
 
                 if (secondPlayer == "ia-player") {
                     //funcao para executar a jogada
