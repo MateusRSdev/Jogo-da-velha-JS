@@ -40,7 +40,9 @@ for (let i = 0; i < caixas.length; i++) {
             //computar jogada
             if (player1 == player2) {
                 player1++;
-                checWinCondition();
+                if(checWinCondition()){
+                    break;
+                }
 
                 if (secondPlayer == "ia-player") {
                     //funcao para executar a jogada
@@ -124,6 +126,7 @@ function checWinCondition() {
         }
 
     }
+    return true;
 }
 
 //limpa o jogo, decalra um vencedor e atualiza o placar
