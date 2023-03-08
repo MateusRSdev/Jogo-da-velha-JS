@@ -201,21 +201,13 @@ function computerPlay() {
         //verifica se existe um risco de perder ou ganhar
         if (vazio == 1 && (X == 2 || O == 2)) {
             let i = 0
-            if (O == 2) {
                 while (i < 3) {
                     if (valoresF[i] == null) {
                         risco = vitoriasP[c][i]
                     }
                     i++
                 }
-            } else if (X == 2) {
-                while (i < 3) {
-                    if (valoresF[i] == null) {
-                        risco = vitoriasP[c][i]
-                    }
-                    i++
-                }
-            }
+            
         }
     }
     let cloneO = o.cloneNode(true);
