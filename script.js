@@ -44,7 +44,10 @@ for (let i = 0; i < caixas.length; i++) {
 
                 if (secondPlayer == "ia-player") {
                     //funcao para executar a jogada
-                    computerPlay()
+                    if(!checWinCondition() === true){
+                        computerPlay()
+                    }
+                    
                     player2++;
                 }
             } else {
@@ -108,7 +111,6 @@ function checWinCondition() {
                 return true;
             } else if (c1 == "o" && c2 == "o" && c3 == "o") {
                 declareWhinner("o")
-                return true;
             }
         }
     }
@@ -123,7 +125,6 @@ function checWinCondition() {
 
         if (counter == 9) {
             declareWhinner("deu velha")
-            return true;
         }
 
     }
@@ -173,9 +174,6 @@ function computerPlay() {
 
     var risco = null;
 
-    if(checWinCondition()){
-        return false
-    }
 
     for (let c = 0; c < 8; c++) {
 
