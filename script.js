@@ -40,9 +40,7 @@ for (let i = 0; i < caixas.length; i++) {
             //computar jogada
             if (player1 == player2) {
                 player1++;
-                if(checWinCondition()){
-                    break;
-                }
+                
 
                 if (secondPlayer == "ia-player") {
                     //funcao para executar a jogada
@@ -107,8 +105,10 @@ function checWinCondition() {
 
             if (c1 == "x" && c2 == "x" && c3 == "x") {
                 declareWhinner("x")
+                return true;
             } else if (c1 == "o" && c2 == "o" && c3 == "o") {
                 declareWhinner("o")
+                return true;
             }
         }
     }
@@ -123,10 +123,11 @@ function checWinCondition() {
 
         if (counter == 9) {
             declareWhinner("deu velha")
+            return true;
         }
 
     }
-    return true;
+    
 }
 
 //limpa o jogo, decalra um vencedor e atualiza o placar
@@ -171,6 +172,10 @@ function declareWhinner(whinner) {
 function computerPlay() {
 
     var risco = null;
+
+    if(checWinCondition()){
+        return false
+    }
 
     for (let c = 0; c < 8; c++) {
 
