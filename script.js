@@ -5,6 +5,9 @@ let botoes = document.querySelectorAll("#buttons_container button");
 let messageConteiner = document.querySelector("#mensagem");
 let messagetext = document.querySelector('#mensagem p');
 let secondPlayer;
+let vez = document.getElementById("vez")
+let vx = document.getElementById("scoreboard-1")
+let vo = document.getElementById("scoreboard-2")
 const vitoriasP = [
     [1, 2, 3],
     [4, 5, 6],
@@ -45,6 +48,9 @@ for (let i = 0; i < caixas.length; i++) {
                     //funcao para executar a jogada
                     computerPlay()
                     console.log("IA");
+                    vx.style.borderBottom = "3px solid red"
+                    vo.style.borderBottom = "none"
+                    vez.innerHTML = "Vez de X"
                     player2++;
                 }
             } else {
@@ -78,13 +84,22 @@ for (let i = 0; i < botoes.length; i++) {
 
 //ve quem vai jogar
 function checkEL(p1, p2) {
+    vx.style.borderBottom = "none"
+    vo.style.borderBottom = "none"
+    vez.innerHTML = ""
     if (p1 == p2) {
         //x
         el = x;
+        
+        vo.style.borderBottom = "3px solid green"
+        vez.innerHTML = "Vez de O"
 
     } else {
         //o
         el = o;
+   
+        vx.style.borderBottom = "3px solid red"
+        vez.innerHTML = "Vez de X"
     }
     return el;
 }
@@ -143,13 +158,13 @@ function declareWhinner(whinner) {
     if (whinner == "x") {
         scoreboardx.textContent = parseInt(scoreboardx.textContent) + 1;
         msg = "O Jogador 1 venceu";
-        quemCommeca(1)
+        // quemCommeca(1)
         venceup = 1
     } else if (whinner == "o") {
         scoreboardy.textContent = parseInt(scoreboardy.textContent) + 1;
         msg = "O Jogador 2 venceu";
         venceup = 2
-        quemCommeca(2)
+        // quemCommeca(2)
     } else {
         msg = "Deu Velha";
 
@@ -177,10 +192,15 @@ function declareWhinner(whinner) {
             console.log("1...");
             player1 = 0;
             player2 = 0;
+            vx.style.borderBottom = "3px solid red"
+            vez.innerHTML = "Vez de X"
 
-        }else if(venceup ==1){
+
+        } else if (venceup == 1) {
             player1 = 1;
             player2 = 0;
+            vo.style.borderBottom = "3px solid green"
+            vez.innerHTML = "Vez de O"
 
         }
 
@@ -196,20 +216,19 @@ function declareWhinner(whinner) {
 
 }
 
-function quemCommeca(v) {
-    let vx = document.getElementById("scoreboard-1")
-    let vo = document.getElementById("scoreboard-2")
-    if (v == 1) {
-        vx.style.borderBottom = "3px solid red"
-    } else if (v == 2) {
-        vo.style.borderBottom = "3px solid green"
-    }
+// function quemCommeca(v) {
 
-    setTimeout(() => {
-        vx.style.borderBottom = "none"
-        vo.style.borderBottom = "none"
-    }, 1500);
-}
+
+//     vx.style.borderBottom = "none"
+//     vo.style.borderBottom = "none"
+//     if (v == 1) {
+//         vo.style.borderBottom = "3px solid green"
+//         vx.style.borderBottom = "3px solid red"
+//     } else if (v == 2) {
+//     }
+
+
+// }
 //logica da IA
 function computerPlay() {
 
