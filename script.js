@@ -1,4 +1,3 @@
-
 let x = document.querySelector(".x");
 let o = document.querySelector(".o");
 let caixas = document.querySelectorAll(".box");
@@ -20,6 +19,7 @@ const vitoriasP = [
 // contador de jogadas
 let player1 = 0;
 let player2 = 0;
+let para = false
 
 console.log(botoes[1]);
 // adicionando evento de clique aos boxes
@@ -29,27 +29,24 @@ for (let i = 0; i < caixas.length; i++) {
         let el = checkEL(player1, player2);
         let valor = el.className;
         console.log(valor);
-
+        checWinCondition()
         //verifica se a caixa ja foi marcada
         if (this.childNodes.length == 0) {
 
             let cloneEL = el.cloneNode(true);
 
             this.appendChild(cloneEL);
-
+            checWinCondition()
             //computar jogada
             if (player1 == player2) {
                 player1++;
-                
 
                 if (secondPlayer == "ia-player") {
                     //funcao para executar a jogada
-                    if(!checWinCondition() === true){
-                        computerPlay()
-                    }
-                    
+                    computerPlay()
+                    console.log("IA");
                     player2++;
-                }
+                } 
             } else {
                 player2++;
             }
@@ -108,9 +105,10 @@ function checWinCondition() {
 
             if (c1 == "x" && c2 == "x" && c3 == "x") {
                 declareWhinner("x")
-                return true;
+                para = true
             } else if (c1 == "o" && c2 == "o" && c3 == "o") {
                 declareWhinner("o")
+                para = true
             }
         }
     }
@@ -125,10 +123,10 @@ function checWinCondition() {
 
         if (counter == 9) {
             declareWhinner("deu velha")
+            para = true
         }
 
     }
-    
 }
 
 //limpa o jogo, decalra um vencedor e atualiza o placar
@@ -138,6 +136,7 @@ function declareWhinner(whinner) {
     let scoreboardx = document.querySelector("#scoreboard-1")
     let scoreboardy = document.querySelector("#scoreboard-2")
     let msg = "";
+    
 
     if (whinner == "x") {
         scoreboardx.textContent = parseInt(scoreboardx.textContent) + 1;
@@ -156,24 +155,31 @@ function declareWhinner(whinner) {
     //esconde mensagem
     setTimeout(function () {
         messageConteiner.className = "hide"
+       
     }, 2000)
 
-    //zera as jogadas 
-    player1 = 0;
-    player2 = 0;
-
+    setTimeout(() => {
+        para = false
+    }, 50);
+    
     let remover = document.querySelectorAll(".box div");
     for (let i = 0; i < remover.length; i++) {
         remover[i].parentNode.removeChild(remover[i]);
     }
+    //zera as jogadas 
+    player1 = 0;
+    player2 = 0;
 
 }
 
 //logica da IA
 function computerPlay() {
 
-    var risco = null;
+    if (para  === true) {
+        return false
+    }
 
+    var risco = null;
 
     for (let c = 0; c < 8; c++) {
 
@@ -207,14 +213,27 @@ function computerPlay() {
         }
         //verifica se existe um risco de perder ou ganhar
         if (vazio == 1 && (X == 2 || O == 2)) {
+            let p = 0
             let i = 0
+            if (O == 2) {
+                while (i < 3) {
+                    if (valoresF[i] == null) {
+                        risco = vitoriasP[c][i]
+                        p = 1
+                    }
+                    i++
+                }
+                if(p == 1 ){
+                    break
+                }
+            } else if (X == 2) {
                 while (i < 3) {
                     if (valoresF[i] == null) {
                         risco = vitoriasP[c][i]
                     }
                     i++
                 }
-            
+            }
         }
     }
     let cloneO = o.cloneNode(true);
