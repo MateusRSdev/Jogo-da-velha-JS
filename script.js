@@ -84,22 +84,16 @@ for (let i = 0; i < botoes.length; i++) {
 
 //ve quem vai jogar
 function checkEL(p1, p2) {
-    vx.style.borderBottom = "none"
-    vo.style.borderBottom = "none"
-    vez.innerHTML = ""
+    atualizar("c")
     if (p1 == p2) {
         //x
         el = x;
-        
-        vo.style.borderBottom = "3px solid green"
-        vez.innerHTML = "Vez de O"
-
+        atualizar("o")        
     } else {
         //o
         el = o;
    
-        vx.style.borderBottom = "3px solid red"
-        vez.innerHTML = "Vez de X"
+        atualizar("x")
     }
     return el;
 }
@@ -177,7 +171,6 @@ function declareWhinner(whinner) {
     //esconde mensagem
     setTimeout(function () {
         messageConteiner.className = "hide"
-
     }, 2000)
 
     setTimeout(() => {
@@ -192,15 +185,11 @@ function declareWhinner(whinner) {
             console.log("1...");
             player1 = 0;
             player2 = 0;
-            vx.style.borderBottom = "3px solid red"
-            vez.innerHTML = "Vez de X"
-
-
+            atualizar("x")
         } else if (venceup == 1) {
             player1 = 1;
             player2 = 0;
-            vo.style.borderBottom = "3px solid green"
-            vez.innerHTML = "Vez de O"
+            atualizar("o")
 
         }
 
@@ -215,20 +204,22 @@ function declareWhinner(whinner) {
     player2 = 0;
 
 }
-
-// function quemCommeca(v) {
-
-
-//     vx.style.borderBottom = "none"
-//     vo.style.borderBottom = "none"
-//     if (v == 1) {
-//         vo.style.borderBottom = "3px solid green"
-//         vx.style.borderBottom = "3px solid red"
-//     } else if (v == 2) {
-//     }
-
-
-// }
+function atualizar(value){
+    vx.style.borderBottom = "none";
+    vo.style.borderBottom = "none";
+    vez.innerHTML = "";
+    if(value  == "x"){
+        vx.style.borderBottom = "3px solid red";
+        vez.innerHTML = "Vez de X";
+    }else if(value == "o"){
+        vo.style.borderBottom = "3px solid green";
+        vez.innerHTML = "Vez de O";
+    }else if(value == "c"){
+        vx.style.borderBottom = "none";
+        vo.style.borderBottom = "none";
+        vez.innerHTML = "";
+    }
+}
 //logica da IA
 function computerPlay() {
 
@@ -257,7 +248,6 @@ function computerPlay() {
             } else {
                 valoresF[i] = linhas[i].childNodes[0].className
             }
-
 
             if (valoresF[i] == null) {
                 vazio += 1
