@@ -46,7 +46,7 @@ for (let i = 0; i < caixas.length; i++) {
                     computerPlay()
                     console.log("IA");
                     player2++;
-                } 
+                }
             } else {
                 player2++;
             }
@@ -81,6 +81,7 @@ function checkEL(p1, p2) {
     if (p1 == p2) {
         //x
         el = x;
+
     } else {
         //o
         el = o;
@@ -129,6 +130,7 @@ function checWinCondition() {
     }
 }
 
+let venceup = 0
 //limpa o jogo, decalra um vencedor e atualiza o placar
 
 function declareWhinner(whinner) {
@@ -136,16 +138,21 @@ function declareWhinner(whinner) {
     let scoreboardx = document.querySelector("#scoreboard-1")
     let scoreboardy = document.querySelector("#scoreboard-2")
     let msg = "";
-    
+
 
     if (whinner == "x") {
         scoreboardx.textContent = parseInt(scoreboardx.textContent) + 1;
         msg = "O Jogador 1 venceu";
+        quemCommeca(1)
+        venceup = 1
     } else if (whinner == "o") {
         scoreboardy.textContent = parseInt(scoreboardy.textContent) + 1;
         msg = "O Jogador 2 venceu";
+        venceup = 2
+        quemCommeca(2)
     } else {
         msg = "Deu Velha";
+
     }
 
     //exibe a mensagem
@@ -155,13 +162,30 @@ function declareWhinner(whinner) {
     //esconde mensagem
     setTimeout(function () {
         messageConteiner.className = "hide"
-       
+
     }, 2000)
 
     setTimeout(() => {
         para = false
-    }, 50);
-    
+        if (secondPlayer == "ia-player") {
+            if (venceup == 1) {
+                player2 = 0
+                player1 = 0;
+                computerPlay()
+            }
+        } else if (venceup == 2) {
+            console.log("1...");
+            player1 = 0;
+            player2 = 0;
+
+        }else if(venceup ==1){
+            player1 = 1;
+            player2 = 0;
+
+        }
+
+    }, 50)
+
     let remover = document.querySelectorAll(".box div");
     for (let i = 0; i < remover.length; i++) {
         remover[i].parentNode.removeChild(remover[i]);
@@ -172,10 +196,24 @@ function declareWhinner(whinner) {
 
 }
 
+function quemCommeca(v) {
+    let vx = document.getElementById("scoreboard-1")
+    let vo = document.getElementById("scoreboard-2")
+    if (v == 1) {
+        vx.style.borderBottom = "3px solid red"
+    } else if (v == 2) {
+        vo.style.borderBottom = "3px solid green"
+    }
+
+    setTimeout(() => {
+        vx.style.borderBottom = "none"
+        vo.style.borderBottom = "none"
+    }, 1500);
+}
 //logica da IA
 function computerPlay() {
 
-    if (para  === true) {
+    if (para === true) {
         return false
     }
 
@@ -223,7 +261,7 @@ function computerPlay() {
                     }
                     i++;
                 }
-                if(p == 1 ){
+                if (p == 1) {
                     break
                 }
             } else if (X == 2) {
@@ -244,7 +282,8 @@ function computerPlay() {
     if (risco === null) {
         for (let i = 0; i < caixas.length; i++) {
 
-            let ramdomNumber = Math.floor(Math.random() * 5)
+            let ramdomNumber = Math.floor(Math.random() * 100)
+            console.log(ramdomNumber);
             //só preeencher se estiver vazio
             if (caixas[i].childNodes[0] == undefined) {
 
