@@ -221,7 +221,7 @@ function computerPlay() {
                         risco = vitoriasP[c][i]
                         p = 1;
                     }
-                    i++
+                    i++;
                 }
                 if(p == 1 ){
                     break
