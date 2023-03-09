@@ -219,7 +219,7 @@ function computerPlay() {
                 while (i < 3) {
                     if (valoresF[i] == null) {
                         risco = vitoriasP[c][i]
-                        p = 1
+                        p = 1;
                     }
                     i++
                 }
